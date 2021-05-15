@@ -1,0 +1,23 @@
+.MovieDetails {
+  display: flex;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #2a363b;
+
+  &_img {
+    margin-right: 40px;
+  }
+
+  &_desc {
+    margin: auto 0;
+  }
+
+  &_list {
+    display: flex;
+    padding: 0px;
+  }
+
+  &_item {
+    margin-right: 10px;
+    font-weight: 500;
+  }
+}
