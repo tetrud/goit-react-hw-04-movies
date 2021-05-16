@@ -1,12 +1,18 @@
-import { Component } from 'react';
+import { Suspense, lazy, Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import moviesApi from '../services/moviesApi';
 import MovieDetails from '../components/MovieDetails';
 import InformationNav from '../components/InformationNav';
-import Cast from '../components/Cast';
-import Reviews from '../components/Reviews';
 import routes from '../routes';
+import Loader from '../components/Loader';
+
+const Cast = lazy(() =>
+  import('../components/Cast' /* webpackChunkName: "cast-page" */),
+);
+const Reviews = lazy(() =>
+  import('../components/Reviews' /* webpackChunkName: "reviews-page" */),
+);
 
 class MovieDetailsPage extends Component {
   state = {
@@ -65,10 +71,12 @@ class MovieDetailsPage extends Component {
           year={date.getFullYear()}
         />
         <InformationNav url={url} />
-        <Switch>
-          <Route path={routes.cast} component={Cast} />
-          <Route path={routes.reviews} component={Reviews} />
-        </Switch>
+        <Suspense fallback={<Loader />}>
+          <Switch>
+            <Route path={routes.cast} component={Cast} />
+            <Route path={routes.reviews} component={Reviews} />
+          </Switch>
+        </Suspense>
       </>
     );
   }
