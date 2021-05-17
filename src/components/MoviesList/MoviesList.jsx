@@ -1,4 +1,4 @@
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 
 import './MoviesList.scss';
 
@@ -7,7 +7,7 @@ const MoviesList = ({ movies, location }) => {
     <ul className="Movie_list">
       {movies.map(({ id, title }) => (
         <li key={id} className="Movie_item">
-          <Link
+          <NavLink
             to={{
               pathname: `/movies/${id}`,
               state: {
@@ -17,7 +17,7 @@ const MoviesList = ({ movies, location }) => {
             className="Movie_link"
           >
             {title}
-          </Link>
+          </NavLink>
         </li>
       ))}
     </ul>

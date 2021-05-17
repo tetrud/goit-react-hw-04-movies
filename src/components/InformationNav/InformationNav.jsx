@@ -1,14 +1,19 @@
 import './InformationNav.scss';
-const { NavLink } = require('react-router-dom');
+const { NavLink, withRouter } = require('react-router-dom');
 
-const InformationNav = ({ url }) => {
+const InformationNav = ({ url, location }) => {
   return (
     <div className="Information">
       <h3>Additional information</h3>
       <ul className="Information_list">
         <li>
           <NavLink
-            to={`${url}/cast`}
+            to={{
+              pathname: `${url}/cast`,
+              state: {
+                from: location.state.from,
+              },
+            }}
             className="Information_link"
             activeClassName="Information_link--active"
           >
@@ -17,7 +22,12 @@ const InformationNav = ({ url }) => {
         </li>
         <li>
           <NavLink
-            to={`${url}/reviews`}
+            to={{
+              pathname: `${url}/reviews`,
+              state: {
+                from: location.state.from,
+              },
+            }}
             className="Information_link"
             activeClassName="Information_link--active"
           >
@@ -29,4 +39,4 @@ const InformationNav = ({ url }) => {
   );
 };
 
-export default InformationNav;
+export default withRouter(InformationNav);

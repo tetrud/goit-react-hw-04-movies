@@ -51,6 +51,9 @@ class MoviesPage extends Component {
     const { movies } = this.state;
     const { location } = this.props;
 
+    console.log('page: ', location);
+    console.log(location.state);
+
     return (
       <>
         <SearchMovie onSubmit={this.hendleSubmit} />

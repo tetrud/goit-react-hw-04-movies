@@ -19,11 +19,14 @@ class HomePage extends Component {
 
   render() {
     const { movies } = this.state;
+    const { location } = this.props;
+    //console.log('home: ', location);
+    //console.log('home: ', location.state);
 
     return (
       <>
         <h1>Trending today</h1>
-        <MoviesList movies={movies} />
+        <MoviesList movies={movies} location={location} />
       </>
     );
   }
